@@ -1,0 +1,375 @@
+object Form1: TForm1
+  Left = 397
+  Height = 280
+  Top = 181
+  Width = 572
+  BorderStyle = bsNone
+  Caption = 'Calculadora'
+  ClientHeight = 280
+  ClientWidth = 572
+  Color = clWhite
+  OnClick = FormClick
+  LCLVersion = '2.2.6.0'
+  object abrepar_bt: TBitBtn
+    Left = 8
+    Height = 50
+    Top = 168
+    Width = 50
+    BorderSpacing.Around = 10
+    Caption = '('
+    OnClick = abrepar_btClick
+    TabOrder = 0
+  end
+  object pi_bt: TBitBtn
+    Left = 8
+    Height = 50
+    Top = 224
+    Width = 50
+    BorderSpacing.Around = 10
+    Caption = 'PI'
+    OnClick = pi_btClick
+    TabOrder = 1
+  end
+  object fechapar_bt: TBitBtn
+    Left = 8
+    Height = 50
+    Top = 112
+    Width = 50
+    BorderSpacing.Around = 10
+    Caption = ')'
+    OnClick = fechapar_btClick
+    TabOrder = 2
+  end
+  object dois_bt: TBitBtn
+    Left = 64
+    Height = 50
+    Top = 168
+    Width = 50
+    BorderSpacing.Around = 10
+    Caption = '2'
+    OnClick = dois_btClick
+    TabOrder = 3
+  end
+  object um_bt: TBitBtn
+    Left = 64
+    Height = 50
+    Top = 224
+    Width = 50
+    BorderSpacing.Around = 10
+    Caption = '1'
+    OnClick = um_btClick
+    TabOrder = 4
+  end
+  object tres_bt: TBitBtn
+    Left = 64
+    Height = 50
+    Top = 112
+    Width = 50
+    BorderSpacing.Around = 10
+    Caption = '3'
+    OnClick = tres_btClick
+    TabOrder = 5
+  end
+  object cinco_bt: TBitBtn
+    Left = 120
+    Height = 50
+    Top = 168
+    Width = 50
+    BorderSpacing.Around = 10
+    Caption = '5'
+    OnClick = cinco_btClick
+    TabOrder = 6
+  end
+  object quatro_bt: TBitBtn
+    Left = 120
+    Height = 50
+    Top = 224
+    Width = 50
+    BorderSpacing.Around = 10
+    Caption = '4'
+    OnClick = quatro_btClick
+    TabOrder = 7
+  end
+  object seis_bt: TBitBtn
+    Left = 120
+    Height = 50
+    Top = 112
+    Width = 50
+    BorderSpacing.Around = 10
+    Caption = '6'
+    OnClick = seis_btClick
+    TabOrder = 8
+  end
+  object oito_bt: TBitBtn
+    Left = 176
+    Height = 50
+    Top = 168
+    Width = 50
+    BorderSpacing.Around = 10
+    Caption = '8'
+    OnClick = oito_btClick
+    TabOrder = 9
+  end
+  object sete_bt: TBitBtn
+    Left = 176
+    Height = 50
+    Top = 224
+    Width = 50
+    BorderSpacing.Around = 10
+    Caption = '7'
+    OnClick = sete_btClick
+    TabOrder = 10
+  end
+  object nove_bt: TBitBtn
+    Left = 176
+    Height = 50
+    Top = 112
+    Width = 50
+    BorderSpacing.Around = 10
+    Caption = '9'
+    OnClick = nove_btClick
+    TabOrder = 11
+  end
+  object ponto_bt: TBitBtn
+    Left = 232
+    Height = 50
+    Top = 168
+    Width = 50
+    BorderSpacing.Around = 10
+    Caption = '.'
+    OnClick = ponto_btClick
+    TabOrder = 12
+  end
+  object zero_bt: TBitBtn
+    Left = 232
+    Height = 50
+    Top = 224
+    Width = 50
+    BorderSpacing.Around = 10
+    Caption = '0'
+    OnClick = zero_btClick
+    TabOrder = 13
+  end
+  object ln_bt: TBitBtn
+    Left = 232
+    Height = 50
+    Top = 112
+    Width = 50
+    BorderSpacing.Around = 10
+    Caption = 'ln'
+    OnClick = ln_btClick
+    TabOrder = 14
+  end
+  object fat_bt: TBitBtn
+    Left = 288
+    Height = 50
+    Top = 168
+    Width = 50
+    BorderSpacing.Around = 10
+    Caption = 'n!'
+    OnClick = fat_btClick
+    TabOrder = 15
+  end
+  object di_bt: TBitBtn
+    Left = 288
+    Height = 50
+    Top = 224
+    Width = 50
+    BorderSpacing.Around = 10
+    Caption = '1/x'
+    TabOrder = 16
+  end
+  object log_bt: TBitBtn
+    Left = 288
+    Height = 50
+    Top = 112
+    Width = 50
+    BorderSpacing.Around = 10
+    Caption = 'log'
+    OnClick = log_btClick
+    TabOrder = 17
+  end
+  object cos_bt: TBitBtn
+    Left = 344
+    Height = 50
+    Top = 168
+    Width = 50
+    BorderSpacing.Around = 10
+    Caption = 'cos'
+    OnClick = cos_btClick
+    TabOrder = 18
+  end
+  object tan_bt: TBitBtn
+    Left = 344
+    Height = 50
+    Top = 224
+    Width = 50
+    BorderSpacing.Around = 10
+    Caption = 'tan'
+    OnClick = tan_btClick
+    TabOrder = 19
+  end
+  object sen_bt: TBitBtn
+    Left = 344
+    Height = 50
+    Top = 112
+    Width = 50
+    BorderSpacing.Around = 10
+    Caption = 'sin'
+    OnClick = sen_btClick
+    TabOrder = 20
+  end
+  object eelex_bt: TBitBtn
+    Left = 400
+    Height = 50
+    Top = 168
+    Width = 50
+    BorderSpacing.Around = 10
+    Caption = 'e^x'
+    OnClick = eelex_btClick
+    TabOrder = 21
+  end
+  object xeley_bt: TBitBtn
+    Left = 400
+    Height = 50
+    Top = 224
+    Width = 50
+    BorderSpacing.Around = 10
+    Caption = 'x^y'
+    OnClick = xeley_btClick
+    TabOrder = 22
+  end
+  object raiz2dex_bt: TBitBtn
+    Left = 456
+    Height = 50
+    Top = 168
+    Width = 50
+    BorderSpacing.Around = 10
+    Caption = '√x'
+    OnClick = raiz2dex_btClick
+    TabOrder = 23
+  end
+  object calcular_bt: TBitBtn
+    Left = 456
+    Height = 50
+    Top = 224
+    Width = 50
+    BorderSpacing.Around = 10
+    Caption = '='
+    OnClick = calcular_btClick
+    TabOrder = 24
+  end
+  object xquadrado_bt: TBitBtn
+    Left = 400
+    Height = 50
+    Top = 112
+    Width = 50
+    BorderSpacing.Around = 10
+    Caption = 'x²'
+    OnClick = xquadrado_btClick
+    TabOrder = 25
+  end
+  object sinalmenos_bt: TBitBtn
+    Left = 512
+    Height = 50
+    Top = 168
+    Width = 50
+    BorderSpacing.Around = 10
+    Caption = '-'
+    OnClick = sinalmenos_btClick
+    TabOrder = 26
+  end
+  object sinaldiv_bt: TBitBtn
+    Left = 512
+    Height = 50
+    Top = 224
+    Width = 50
+    BorderSpacing.Around = 10
+    Caption = '/'
+    OnClick = sinaldiv_btClick
+    TabOrder = 27
+  end
+  object sinalmais_bt: TBitBtn
+    Left = 456
+    Height = 50
+    Top = 112
+    Width = 50
+    BorderSpacing.Around = 10
+    Caption = '+'
+    OnClick = sinalmais_btClick
+    TabOrder = 28
+  end
+  object calcinverso_bt: TBitBtn
+    Left = 288
+    Height = 50
+    Top = 56
+    Width = 50
+    BorderSpacing.Around = 10
+    Caption = '+/-'
+    TabOrder = 29
+  end
+  object sinalmulti_bt: TBitBtn
+    Left = 512
+    Height = 50
+    Top = 112
+    Width = 50
+    BorderSpacing.Around = 10
+    Caption = '*'
+    OnClick = sinalmulti_btClick
+    TabOrder = 30
+  end
+  object inverso_checkb: TCheckBox
+    Left = 104
+    Height = 19
+    Top = 64
+    Width = 36
+    Caption = 'Inv'
+    OnChange = inverso_checkbChange
+    TabOrder = 31
+  end
+  object backspace_bt: TBitBtn
+    Left = 344
+    Height = 34
+    Top = 56
+    Width = 104
+    BorderSpacing.Around = 10
+    Caption = 'backspace'
+    TabOrder = 32
+  end
+  object cancelaroperacao_bt: TBitBtn
+    Left = 456
+    Height = 34
+    Top = 56
+    Width = 106
+    BorderSpacing.Around = 10
+    Caption = 'C'
+    OnClick = cancelaroperacao_btClick
+    TabOrder = 33
+  end
+  object graus_rb: TRadioButton
+    Left = 24
+    Height = 19
+    Top = 64
+    Width = 49
+    Caption = 'graus'
+    Checked = True
+    OnChange = graus_rbChange
+    TabOrder = 34
+    TabStop = True
+  end
+  object radiano_rb: TRadioButton
+    Left = 24
+    Height = 19
+    Top = 87
+    Width = 60
+    Caption = 'radiano'
+    TabOrder = 35
+  end
+  object entry2_txt: TEdit
+    Left = 8
+    Height = 23
+    Top = 24
+    Width = 554
+    TabOrder = 36
+  end
+end

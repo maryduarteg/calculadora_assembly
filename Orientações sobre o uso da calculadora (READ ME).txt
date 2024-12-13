@@ -1,0 +1,10 @@
+---------------------------------------------------------------------------------- ATENÇÃO -----------------------------------------------------------------------------------------------
+Saudações usuário da calculadora! :D
+Abaixo estão algumas instruções para utilizar o programa:
+
+1. Para utilizar números negativos na expressão certifique-se de fazer o uso correto de parênteses;
+2. Caso for calcular o oposto de um número NÃO coloque parênteses. 
+2. Para calcular a raiz y de x faça x^(1/y);
+
+
+Atenciosamente: Breno Ortiz Nalin e Mary Adryany Duarte Gonçalves da Silva

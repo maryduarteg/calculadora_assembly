@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <ProjectSession>
+    <PathDelim Value="\"/>
+    <Version Value="12"/>
+    <BuildModes Active="Default"/>
+    <Units>
+      <Unit>
+        <Filename Value="calculadora.lpr"/>
+        <IsPartOfProject Value="True"/>
+        <EditorIndex Value="-1"/>
+        <UsageCount Value="124"/>
+      </Unit>
+      <Unit>
+        <Filename Value="calculadora_form.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="Form1"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <IsVisibleTab Value="True"/>
+        <TopLine Value="276"/>
+        <CursorPos X="9" Y="287"/>
+        <UsageCount Value="124"/>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="C:\lazarus\fpc\3.2.2\source\rtl\inc\systemh.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="1194"/>
+        <CursorPos X="10" Y="1208"/>
+        <UsageCount Value="5"/>
+      </Unit>
+      <Unit>
+        <Filename Value="C:\lazarus\fpc\3.2.2\source\rtl\objpas\sysutils\sysstrh.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="117"/>
+        <CursorPos X="10" Y="131"/>
+        <UsageCount Value="10"/>
+      </Unit>
+      <Unit>
+        <Filename Value="calculadora_form.lfm"/>
+        <EditorIndex Value="-1"/>
+        <UsageCount Value="6"/>
+        <DefaultSyntaxHighlighter Value="LFM"/>
+      </Unit>
+      <Unit>
+        <Filename Value="C:\lazarus\lcl\include\customform.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="1886"/>
+        <CursorPos X="20" Y="1891"/>
+        <UsageCount Value="10"/>
+      </Unit>
+    </Units>
+    <JumpHistory HistoryIndex="29">
+      <Position>
+        <Filename Value="calculadora_form.pas"/>
+        <Caret Line="293" Column="14" TopLine="287"/>
+      </Position>
+      <Position>
+        <Filename Value="calculadora_form.pas"/>
+        <Caret Line="294" Column="14" TopLine="288"/>
+      </Position>
+      <Position>
+        <Filename Value="calculadora_form.pas"/>
+        <Caret Line="293" Column="14" TopLine="287"/>
+      </Position>
+      <Position>
+        <Filename Value="calculadora_form.pas"/>
+        <Caret Line="292" Column="14" TopLine="286"/>
+      </Position>
+      <Position>
+        <Filename Value="calculadora_form.pas"/>
+        <Caret Line="291" Column="14" TopLine="285"/>
+      </Position>
+      <Position>
+        <Filename Value="calculadora_form.pas"/>
+        <Caret Line="294" Column="14" TopLine="288"/>
+      </Position>
+      <Position>
+        <Filename Value="calculadora_form.pas"/>
+        <Caret Line="293" Column="14" TopLine="287"/>
+      </Position>
+      <Position>
+        <Filename Value="calculadora_form.pas"/>
+        <Caret Line="292" Column="14" TopLine="286"/>
+      </Position>
+      <Position>
+        <Filename Value="calculadora_form.pas"/>
+        <Caret Line="291" Column="14" TopLine="285"/>
+      </Position>
+      <Position>
+        <Filename Value="calculadora_form.pas"/>
+        <Caret Line="294" Column="14" TopLine="288"/>
+      </Position>
+      <Position>
+        <Filename Value="calculadora_form.pas"/>
+        <Caret Line="480" Column="6" TopLine="466"/>
+      </Position>
+      <Position>
+        <Filename Value="calculadora_form.pas"/>
+        <Caret Line="479" Column="6" TopLine="465"/>
+      </Position>
+      <Position>
+        <Filename Value="calculadora_form.pas"/>
+        <Caret Line="478" Column="6" TopLine="464"/>
+      </Position>
+      <Position>
+        <Filename Value="calculadora_form.pas"/>
+        <Caret Line="477" Column="6" TopLine="463"/>
+      </Position>
+      <Position>
+        <Filename Value="calculadora_form.pas"/>
+        <Caret Line="476" Column="6" TopLine="462"/>
+      </Position>
+      <Position>
+        <Filename Value="calculadora_form.pas"/>
+        <Caret Line="477" Column="6" TopLine="463"/>
+      </Position>
+      <Position>
+        <Filename Value="calculadora_form.pas"/>
+        <Caret Line="480" Column="6" TopLine="466"/>
+      </Position>
+      <Position>
+        <Filename Value="calculadora_form.pas"/>
+        <Caret Line="479" Column="6" TopLine="465"/>
+      </Position>
+      <Position>
+        <Filename Value="calculadora_form.pas"/>
+        <Caret Line="478" Column="6" TopLine="464"/>
+      </Position>
+      <Position>
+        <Filename Value="calculadora_form.pas"/>
+        <Caret Line="477" Column="6" TopLine="463"/>
+      </Position>
+      <Position>
+        <Filename Value="calculadora_form.pas"/>
+        <Caret Line="476" Column="6" TopLine="462"/>
+      </Position>
+      <Position>
+        <Filename Value="calculadora_form.pas"/>
+        <Caret Line="480" Column="6" TopLine="466"/>
+      </Position>
+      <Position>
+        <Filename Value="calculadora_form.pas"/>
+        <Caret Line="479" Column="6" TopLine="465"/>
+      </Position>
+      <Position>
+        <Filename Value="calculadora_form.pas"/>
+        <Caret Line="478" Column="6" TopLine="464"/>
+      </Position>
+      <Position>
+        <Filename Value="calculadora_form.pas"/>
+        <Caret Line="477" Column="6" TopLine="463"/>
+      </Position>
+      <Position>
+        <Filename Value="calculadora_form.pas"/>
+        <Caret Line="476" Column="6" TopLine="462"/>
+      </Position>
+      <Position>
+        <Filename Value="calculadora_form.pas"/>
+        <Caret Line="485" Column="6" TopLine="471"/>
+      </Position>
+      <Position>
+        <Filename Value="calculadora_form.pas"/>
+        <Caret Line="13" Column="28"/>
+      </Position>
+      <Position>
+        <Filename Value="calculadora_form.pas"/>
+        <Caret Line="259" Column="6" TopLine="253"/>
+      </Position>
+      <Position>
+        <Filename Value="calculadora_form.pas"/>
+        <Caret Line="261" Column="6" TopLine="255"/>
+      </Position>
+    </JumpHistory>
+    <RunParams>
+      <FormatVersion Value="2"/>
+      <Modes ActiveMode=""/>
+    </RunParams>
+  </ProjectSession>
+</CONFIG>

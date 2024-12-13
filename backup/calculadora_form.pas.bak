@@ -1,0 +1,689 @@
+unit calculadora_form;
+{$mode objfpc}{$H+}
+
+interface
+
+uses
+  Classes, SysUtils, Forms, Controls, Graphics, Dialogs, ExtCtrls, Buttons,
+  StdCtrls;
+
+type
+  { TForm1 }
+
+  TForm1 = class(TForm)
+    entry2_txt: TEdit;
+    inverso_checkb: TCheckBox;
+    abrepar_bt: TBitBtn;
+    pi_bt: TBitBtn;
+    sete_bt: TBitBtn;
+    nove_bt: TBitBtn;
+    ponto_bt: TBitBtn;
+    zero_bt: TBitBtn;
+    ln_bt: TBitBtn;
+    fat_bt: TBitBtn;
+    di_bt: TBitBtn;
+    log_bt: TBitBtn;
+    cos_bt: TBitBtn;
+    tan_bt: TBitBtn;
+    fechapar_bt: TBitBtn;
+    sen_bt: TBitBtn;
+    eelex_bt: TBitBtn;
+    xeley_bt: TBitBtn;
+    raiz2dex_bt: TBitBtn;
+    calcular_bt: TBitBtn;
+    xquadrado_bt: TBitBtn;
+    sinalmenos_bt: TBitBtn;
+    sinaldiv_bt: TBitBtn;
+    sinalmais_bt: TBitBtn;
+    dois_bt: TBitBtn;
+    calcinverso_bt: TBitBtn;
+    backspace_bt: TBitBtn;
+    sinalmulti_bt: TBitBtn;
+    cancelaroperacao_bt: TBitBtn;
+    um_bt: TBitBtn;
+    tres_bt: TBitBtn;
+    cinco_bt: TBitBtn;
+    quatro_bt: TBitBtn;
+    seis_bt: TBitBtn;
+    oito_bt: TBitBtn;
+    graus_rb: TRadioButton;
+    radiano_rb: TRadioButton;
+    procedure abrepar_btClick(Sender: TObject);
+    procedure calcular_btClick(Sender: TObject);
+    procedure cancelaroperacao_btClick(Sender: TObject);
+    procedure cinco_btClick(Sender: TObject);
+    procedure cos_btClick(Sender: TObject);
+    procedure dois_btClick(Sender: TObject);
+    procedure eelex_btClick(Sender: TObject);
+    procedure fat_btClick(Sender: TObject);
+    procedure fechapar_btClick(Sender: TObject);
+    procedure FormClick(Sender: TObject);
+    procedure inverso_checkbChange(Sender: TObject);
+    procedure graus_rbChange(Sender: TObject);
+    procedure ln_btClick(Sender: TObject);
+    procedure log_btClick(Sender: TObject);
+    procedure nove_btClick(Sender: TObject);
+    procedure oito_btClick(Sender: TObject);
+    procedure pi_btClick(Sender: TObject);
+    procedure quatro_btClick(Sender: TObject);
+    procedure raiz2dex_btClick(Sender: TObject);
+    procedure seis_btClick(Sender: TObject);
+    procedure sen_btClick(Sender: TObject);
+    procedure sete_btClick(Sender: TObject);
+    procedure sinaldiv_btClick(Sender: TObject);
+    procedure sinalmais_btClick(Sender: TObject);
+    procedure sinalmenos_btClick(Sender: TObject);
+    procedure sinalmulti_btClick(Sender: TObject);
+    procedure tan_btClick(Sender: TObject);
+    procedure tres_btClick(Sender: TObject);
+    procedure um_btClick(Sender: TObject);
+    procedure ponto_btClick(Sender: TObject);
+    procedure xeley_btClick(Sender: TObject);
+    procedure xquadrado_btClick(Sender: TObject);
+    procedure zero_btClick(Sender: TObject);
+  private
+
+  public
+
+  end;
+
+var
+  Form1: TForm1;
+  expressao: string;
+
+implementation
+
+{$R *.lfm}
+
+{ TForm1 }
+
+
+
+
+
+function Precedencia(const c: string): integer;
+begin
+  if SameText(c, '~') then
+    Result := 4
+  else if SameText(c, '^') then
+    Result := 3
+  else if (SameText(c, '*')) or (SameText(c, '/')) then
+    Result := 2
+  else if (SameText(c, '+')) or (SameText(c, '-')) then
+    Result := 1
+  else
+    Result := 0;
+end;
+
+function Operador(const c: string): boolean;
+begin
+  Result := (SameText(c, '+')) or (SameText(c, '-')) or (SameText(c, '*')) or (SameText(c, '/')) or
+            (SameText(c, '^')) or (SameText(c, '~')) or (SameText(c, 'l')) or (SameText(c, 'n')) or
+            (SameText(c, 's')) or (SameText(c, 'c')) or (SameText(c, 't')) or (Sametext(c, 'r')) or
+            (SameText(c, '!'));
+end;
+
+function TransformarParaNotacaoPosfixa(const expressao: string): string;
+const
+  MAX_EXPR_LEN = 100;
+var
+  i, temp: integer;
+  c: Char;
+  len: integer;
+  stack: array[0..MAX_EXPR_LEN-1] of Char;
+  top: integer;
+  sinFlag, cosFlag, tanFlag, logFlag, lnFlag, raizFlag: boolean;
+
+begin
+  Result := '';
+  len := Length(expressao);
+  top := -1;
+  sinFlag := False;
+  cosFlag := False;
+  tanFlag := False;
+  logFlag := False;
+  lnFlag := False;
+  raizFlag := False;
+
+  i := 1;
+  while i <= len do
+  begin
+    c := expressao[i];
+    if CharInSet(c, [' ', #9, #10, #13]) then
+    begin
+      Inc(i);
+      Continue;
+    end;
+
+    if CharInSet(c, ['e','.','p','0','1','2','3','4','5','6','7','8','9']) then
+    begin
+      Result := Result + c;
+      temp := i + 1;
+      while (temp <= len) and (expressao[temp] in ['e','p','.','0','1','2','3','4','5','6','7','8','9']) do
+      begin
+        c := expressao[temp];
+        Result := Result + c;
+        Inc(temp);
+      end;
+
+      if sinFlag then
+      begin
+        Result := Result + ' s ';
+        sinFlag := False;
+      end
+      else if cosFlag then
+      begin
+        Result := Result + ' c';
+      end
+      else if tanFlag then
+      begin
+        Result := Result + ' t';
+      end
+      else if logFlag then
+      begin
+        Result := Result + ' l ';
+        logFlag := False;
+      end
+      else if lnFlag then
+      begin
+        Result := Result + ' n ';
+        lnFlag := False;
+      end
+      else if raizFlag then
+      begin
+        Result := Result + ' r';
+        raizFlag := False;
+      end
+      else
+        Result := Result + ' ';
+      i := temp;
+    end
+    else if Operador(c) then
+    begin
+      if (c = '-') and (i > 1) and (not CharInSet(expressao[i-1], ['0'..'9', ')'])) then
+      begin
+        Result := Result + '0 ';
+      end;
+
+      while (top >= 0) and (Precedencia(stack[top]) >= Precedencia(c)) do
+      begin
+        Result := Result + stack[top] + ' ';
+        Dec(top);
+      end;
+
+      Inc(top);
+      stack[top] := c;
+      Inc(i);
+    end
+    else if c = '(' then
+    begin
+      Inc(top);
+      stack[top] := c;
+      Inc(i);
+    end
+    else if c = ')' then
+    begin
+      while (top >= 0) and (stack[top] <> '(') do
+      begin
+        Result := Result + stack[top] + ' ';
+        Dec(top);
+      end;
+
+      if (top < 0) or (stack[top] <> '(') then
+      begin
+        Result := 'Erro: parênteses não correspondentes';
+        Exit;
+      end;
+
+      Dec(top);
+      Inc(i);
+    end
+    else
+    begin
+      Result := 'Erro: caractere inválido na expressão';
+      Exit;
+    end;
+  end;
+
+  while top >= 0 do
+  begin
+    Result := Result + stack[top] + ' ';
+    Dec(top);
+  end;
+end;
+
+
+
+
+
+
+
+
+
+procedure TForm1.um_btClick(Sender: TObject);
+begin
+  entry2_txt.Text := entry2_txt.Text + '1';
+end;
+
+procedure TForm1.dois_btClick(Sender: TObject);
+begin
+  entry2_txt.Text := entry2_txt.Text + '2';
+end;
+
+procedure TForm1.tres_btClick(Sender: TObject);
+begin
+  entry2_txt.Text := entry2_txt.Text + '3';
+end;
+
+procedure TForm1.quatro_btClick(Sender: TObject);
+begin
+  entry2_txt.Text := entry2_txt.Text + '4';
+end;
+
+procedure TForm1.raiz2dex_btClick(Sender: TObject);
+begin
+   entry2_txt.Text := entry2_txt.Text + 'raiz(';
+end;
+
+procedure TForm1.cinco_btClick(Sender: TObject);
+begin
+  entry2_txt.Text := entry2_txt.Text + '5';
+end;
+
+procedure TForm1.seis_btClick(Sender: TObject);
+begin
+  entry2_txt.Text := entry2_txt.Text + '6';
+end;
+
+procedure TForm1.sete_btClick(Sender: TObject);
+begin
+  entry2_txt.Text := entry2_txt.Text + '7';
+end;
+
+procedure TForm1.oito_btClick(Sender: TObject);
+begin
+  entry2_txt.Text := entry2_txt.Text + '8';
+end;
+
+procedure TForm1.nove_btClick(Sender: TObject);
+begin
+  entry2_txt.Text := entry2_txt.Text + '9';
+end;
+
+procedure TForm1.zero_btClick(Sender: TObject);
+begin
+  entry2_txt.Text := entry2_txt.Text + '0';
+end;
+
+procedure TForm1.ponto_btClick(Sender: TObject);
+begin
+  entry2_txt.Text := entry2_txt.Text + '.';
+end;
+
+procedure TForm1.abrepar_btClick(Sender: TObject);
+begin
+  entry2_txt.Text := entry2_txt.Text + '(';
+end;
+
+procedure TForm1.fechapar_btClick(Sender: TObject);
+begin
+  entry2_txt.Text := entry2_txt.Text + ')';
+end;
+
+procedure TForm1.sinalmais_btClick(Sender: TObject);
+begin
+  entry2_txt.Text := entry2_txt.Text + '+';
+end;
+
+procedure TForm1.sinalmenos_btClick(Sender: TObject);
+begin
+  entry2_txt.Text := entry2_txt.Text + '-';
+end;
+
+procedure TForm1.sinalmulti_btClick(Sender: TObject);
+begin
+  entry2_txt.Text := entry2_txt.Text + '*';
+end;
+
+procedure TForm1.sinaldiv_btClick(Sender: TObject);
+begin
+  entry2_txt.Text := entry2_txt.Text + '/';
+end;
+
+procedure TForm1.cancelaroperacao_btClick(Sender: TObject);
+begin
+  entry2_txt.Text := '';
+end;
+
+procedure TForm1.xquadrado_btClick(Sender: TObject);
+begin
+  entry2_txt.Text := entry2_txt.Text + '^2';
+end;
+
+procedure TForm1.xeley_btClick(Sender: TObject);
+begin
+  entry2_txt.Text := entry2_txt.Text + '^';
+end;
+
+procedure TForm1.eelex_btClick(Sender: TObject);
+begin
+  entry2_txt.Text := entry2_txt.Text + 'e(';
+end;
+
+procedure TForm1.pi_btClick(Sender: TObject);
+begin
+  entry2_txt.Text := entry2_txt.Text + 'p';
+end;
+
+
+procedure TForm1.ln_btClick(Sender: TObject);
+begin
+  entry2_txt.Text := entry2_txt.Text + 'n(';
+end;
+
+procedure TForm1.log_btClick(Sender: TObject);
+begin
+  entry2_txt.Text := entry2_txt.Text + 'l(';
+end;
+
+procedure TForm1.fat_btClick(Sender: TObject);
+begin
+  entry2_txt.Text := entry2_txt.Text + '!';
+end;
+
+procedure TForm1.sen_btClick(Sender: TObject);
+begin
+  entry2_txt.Text := entry2_txt.Text + 's(';
+end;
+
+procedure TForm1.cos_btClick(Sender: TObject);
+begin
+  entry2_txt.Text := entry2_txt.Text + 'c(';
+end;
+
+procedure TForm1.tan_btClick(Sender: TObject);
+begin
+  entry2_txt.Text := entry2_txt.Text + 't(';
+end;
+
+procedure TForm1.inverso_checkbChange(Sender: TObject);
+begin
+  // Atualize a lógica de inversão aqui
+end;
+
+procedure TForm1.graus_rbChange(Sender: TObject);
+begin
+  // Atualize a lógica de conversão de graus/radianos aqui
+
+end;
+
+procedure TForm1.FormClick(Sender: TObject);
+begin
+  entry2_txt.SetFocus;
+end;
+
+
+
+procedure iniciarPilha();
+begin
+  {$ASMMODE intel}
+    asm
+       finit
+    end;
+end;
+
+procedure empilhar(numero: real);
+begin
+   {$ASMMODE intel}
+     asm
+       fld numero
+     end;
+end;
+
+function desempilhar():real;
+var x:real;
+begin
+  x:=0.0;
+  {$ASMMODE intel}
+  asm
+     fstp x
+  end;
+  result := x;
+end;
+
+procedure somar();
+var aux:real;
+begin
+  {$ASMMODE intel}
+  asm
+     fadd st(1),st
+     fstp aux
+  end;
+end;
+
+procedure subtrair();
+begin
+  {$ASMMODE intel}
+  asm
+     fsub
+  end;
+end;
+
+procedure multiplicar();
+begin
+  {$ASMMODE intel}
+  asm
+     fmul
+  end;
+end;
+
+procedure dividir();
+begin
+  {$ASMMODE intel}
+  asm
+     fdiv
+  end;
+end;
+
+procedure seno();
+begin
+  {$ASMMODE intel}
+  asm
+     fsin
+  end;
+end;
+
+procedure cosseno();
+begin
+  {$ASMMODE intel}
+  asm
+     fcos
+  end;
+end;
+
+procedure raiz();
+begin
+  {$ASMMODE intel}
+  asm
+     fsqrt
+  end;
+end;
+
+procedure fatorial(varaux: real);
+var count, aux2, aux3, aux4:integer;
+begin
+  count =  floattointeger(varaux);
+  aux3=cont;
+  aux2=2;
+
+  {$ASMMODE intel}
+  asm
+     @fatorial
+     fld1
+     fld aux2;
+     fmul
+     fld aux3
+     fcomp
+     jb @fatorial
+
+  end;
+end;
+
+
+procedure TForm1.calcular_btClick(Sender: TObject);
+var
+  expressao, resultado, numero, exibir: string;
+  c: char;
+  j, tamanho: integer;
+  resultadofinal, numpilha, numaux, numaux2: real;
+begin
+  j := 1;
+
+  expressao := entry2_txt.Text;
+  resultado := TransformarParaNotacaoPosfixa(expressao);
+  tamanho := Length(resultado);
+
+  iniciarpilha();
+
+  while j <= tamanho do
+  begin
+    if resultado[j] in ['e', '.', ',', 'p', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9'] then
+  begin
+    numero := resultado[j];
+    while (j + 1 <= tamanho) and (resultado[j + 1] in ['e', '.', ',', 'p', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9']) do
+    begin
+      j := j + 1;
+      if resultado[j] in ['.', ','] then
+        numero := numero + DecimalSeparator // Usa o separador decimal configurado no sistema
+      else
+        numero := numero + resultado[j];
+    end;
+
+    if numero = 'p' then
+    begin
+      empilhar(3.14159265358979323846);
+    end
+    else if numero = 'e' then
+    begin
+      empilhar(2.718281828459045235360287);
+    end
+    else
+    begin
+      numpilha := StrToFloat(numero);
+      empilhar(numpilha);
+    end;
+
+    numero := '';
+  end
+
+    else if Operador(resultado[j]) then
+    begin
+      c := resultado[j];
+      if SameText(c, '+') then
+      begin
+        somar();
+      end
+      else if SameText(c, '-') then
+      begin
+        subtrair();
+      end
+      else if SameText(c, '*') then
+      begin
+        multiplicar();
+      end
+      else if SameText(c, '/') then
+      begin
+        dividir();
+      end
+      else if SameText(c, 'l') then
+      begin
+        // logaritmo();
+      end
+      else if SameText(c, 'n') then
+      begin
+        // lognatural();
+      end
+      else if SameText(c, 's') then
+      begin
+        if graus_rb.Checked = true then
+        begin
+          numaux := desempilhar();
+          numaux := numaux*(3.14159265358979323846/180);
+          empilhar(numaux);
+          seno();
+        end
+      else
+      begin
+          seno();
+      end;
+
+      end
+      else if SameText(c, 'c') then
+      begin
+       if graus_rb.Checked = true then
+       begin
+        numaux := desempilhar();
+        numaux := numaux*(3.14159265358979323846/180);
+        empilhar(numaux);
+        cosseno();
+       end
+       else
+       begin
+        cosseno();
+       end;
+      end
+
+      else if SameText(c, 't') then
+      begin
+       if graus_rb.Checked = true then
+        begin
+         numaux := desempilhar();
+        if numaux = 90.000 then
+         begin
+              entry2_txt.Text:='Erro';
+              exit;
+         end
+        else
+        begin
+         numaux := numaux*(3.14159265358979323846/180);
+         numaux2:=numaux;
+         empilhar(numaux);
+         seno();
+         empilhar(numaux2);
+         cosseno();
+         dividir();
+        end;
+        end
+
+       else
+       begin
+        numaux := desempilhar();
+        numaux2:=numaux;
+        empilhar(numaux);
+        seno();
+        empilhar(numaux2);
+        cosseno();
+        dividir();
+       end;
+      end
+      else if SameText(c, 'r') then
+      begin
+        raiz();
+      end
+      else if SameText(c, '!') then
+      begin
+        numaux=desempilhar();
+        fatorial(numaux);
+      end
+    end;
+
+    j := j + 1;
+  end;
+
+  resultadofinal := desempilhar();
+  exibir := FloatToStr(resultadofinal);
+  exibir := StringReplace(exibir, ',', '.', [rfReplaceAll]);
+  entry2_txt.text := exibir;
+
+end;
+end.
